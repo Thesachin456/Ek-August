@@ -82,6 +82,7 @@ const messageSchema = new mongoose.Schema({
 // Index for efficient querying
 messageSchema.index({ room: 1, createdAt: -1 });
 messageSchema.index({ sender: 1 });
+messageSchema.index({ content: 'text' }); // Text search index
 
 // Method to mark message as read by user
 messageSchema.methods.markAsRead = function(userId) {
