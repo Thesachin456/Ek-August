@@ -6,8 +6,7 @@ import {
   ListItem,
   ListItemText,
   Avatar,
-  IconButton,
-  Divider
+  IconButton
 } from '@mui/material';
 import {
   Add as AddIcon,
