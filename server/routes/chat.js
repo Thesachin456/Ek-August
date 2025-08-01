@@ -335,7 +335,4 @@ router.put('/rooms/:roomId', authenticateToken, async (req, res) => {
   }
 });
 
-// Create text search index for messages
-Message.collection.createIndex({ content: 'text' });
-
 module.exports = router;
