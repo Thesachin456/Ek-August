@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: ek-august-chat
+    env: node
+    plan: free
+    buildCommand: npm install && npm run install-client && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        fromDatabase:
+          name: ek-august-chat-db
+          property: connectionString
+      - key: CLIENT_URL
+        fromService:
+          type: web
+          name: ek-august-chat
+          property: host
+
+databases:
+  - name: ek-august-chat-db
+    databaseName: ek_august_chat
+    user: chat_user
+    plan: free
